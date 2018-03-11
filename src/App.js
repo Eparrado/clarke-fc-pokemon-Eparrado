@@ -10,13 +10,13 @@ class App extends Component {
       filter : ''
     };
 
-    this.PokemonFiltered = this.PokemonFiltered.bind(this)
+    this.handleChange = this.handleChange.bind(this)
 
   }
 
-  PokemonFiltered(event){
+  handleChange(event){
    this.setState({
-     filter: event.target.value.toLowerCase()
+     filter: event.target.value
    });
  }
 
@@ -56,7 +56,7 @@ class App extends Component {
     <div className="App">
       <div className="introduction">
         <img className="pokeball-animation" src="images/pokeball.png" alt="pokeball"/>
-        <input className="input-style" type="text" name="buscar" placeholder="Introduce un nombre para buscar" onChange={this.pokemonFiltered}/>
+        <input className="input-style" type="text" name="buscar" placeholder="Introduce un nombre para buscar" value={this.state.filter} onChange={this.handleChange}/>
       </div>
       {this.printPokemons()}
     </div>
